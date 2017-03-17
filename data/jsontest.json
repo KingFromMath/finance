@@ -1,0 +1,8 @@
+{"FXCM": [{"EURCAD_Daily": ""}, {"EURCHF_Daily": ""}, {"EURGBP_Daily": ""}, {"EURJPY_Daily": ""}, {"EURUSD_Daily": ""},
+              {"GBPUSD_Daily": ""}, {"USDCHF_Daily": ""}, {"USDJPY_Daily": ""}, {"USDCNH_Daily": ""}],
+  "FOREX": [{"EURCAD_Daily": ""},
+            {"EURCHF_Daily": ""}, {"EURGBP_Daily": ""}, {"EURJPY_Daily": ""}, {"EURUSD_Daily": ""}, {"GBPUSD_Daily": ""},
+            {"USDCHF_Daily": ""}, {"USDJPY_Daily": ""}, {"USDCNH_Daily": ""}],
+  "XM": [{"EURCAD_Daily": ""}, {"EURCHF_Daily": ""},
+            {"EURGBP_Daily": ""}, {"EURJPY_Daily": ""}, {"EURUSD_Daily": ""}, {"GBPUSD_Daily": ""}, {"USDCHF_Daily": ""}, {"USDJPY_Daily": ""},
+            {"USDCNH_Daily": ""}]}
