@@ -1,0 +1,19 @@
+CREATE TABLE currencytrades (
+  id SERIAL primary key,
+  insertdata timestamp DEFAULT (now()),
+  agent char(6),
+  ticket char(10),
+  opentime timestamp,
+  type char(6),
+  size decimal,
+  item char(10),
+  price decimal,
+  sl decimal,
+  tp decimal,
+  closetime timestamp,
+  closeprice decimal,
+  commission decimal,
+  taxes decimal,
+  swap decimal,
+  profit decimal
+ ) ;
