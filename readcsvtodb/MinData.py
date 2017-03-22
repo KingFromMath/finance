@@ -21,6 +21,11 @@ from iolib.database.ToDataBase import *
 from iolib.file.Path import *
 
 def makeParam(param):
+    '''
+    获取window参数
+    :param param: path string
+    :return: string
+    '''
     result1 = (param.split('.')[0])
     if result1[-2]=='1':
         return '15min'
@@ -28,6 +33,13 @@ def makeParam(param):
         return '5min'
 
 def addInfo(param1, param2, param3):
+    '''
+    遍历文件夹，更新数据
+    :param param1: path string
+    :param param2: sql for select * from db
+    :param param3: dbName
+    :return:
+    '''
     instance = Path(param1)
     result1 = instance.secondFile()
 
@@ -58,7 +70,7 @@ def addInfo(param1, param2, param3):
                 df21['window'] = window
                 df21['pair'] = currencyPair
 
-                instance0.addToDB(df21, param3)
+                instance0.addToDB(df21, param3)    #inset record
 
             recordcount += count
             logging.info(agent+'-'+currencyPair+'-'+window+'新增数据：'+str(recordcount))
@@ -70,7 +82,7 @@ def addInfo(param1, param2, param3):
 
 def main():
     param1 = '/home/hadoop/Files/Data/test/data1'
-    param2 = 'select * from eurcad_5min_1'
+    param2 = 'select * from minrecord'
     param3 = 'minrecord'
     # addInfo(param1, param2, param3)
 if __name__ == '__main__':
