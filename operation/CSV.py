@@ -18,8 +18,9 @@ create for:
 """
 from readcsvtodb.MinData import  addInfo
 
-'更新5min/15min数据'
-param1 = '/home/hadoop/Files/Data/test/data1'
+'''更新5min/15min数据
+'''
+param1 = '/home/hadoop/Files/Data/test/data1'    #文件结构：data1/xm/ERUCAD15.csv
 param2 = 'select * from minrecord'
 param3 = 'minrecord'
 addInfo(param1, param2, param3)
