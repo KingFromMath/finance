@@ -44,7 +44,7 @@ def transform(param):
 
     return df12
 
-def lastDate(param1, param2):
+def newDate(param1, param2):
     '''
     获取csv中的更新数据
     :param param1: DF from DB
@@ -98,8 +98,8 @@ def main():
     # print(df20)
 
     'lastDate测试'
-    df21 = lastDate(df20, df22)
-    # print(df21)
+    df21 = newDate(df20, df22)
+    print(df21)
 
 
 

@@ -72,7 +72,7 @@ def main():
     #     print(result0)
     ''
     result1 = instance.agentName()
-    print(result1)
+    # print(result1)
 
 
 if __name__ == '__main__':
