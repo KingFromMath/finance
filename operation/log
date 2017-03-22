@@ -1,0 +1,17 @@
+2017/3/22
+一不小心，数据质量就堪忧，看来ETL的程序还得进一步完善。建议在真正插入数据前进行数据校验。
+NFO     fxcm-eurgbp-15min新增数据：190
+INFO     fxcm-eurgbp-5min新增数据：1
+INFO     fxcm-usdchf-15min新增数据：190
+INFO     fxcm-eurchf-5min新增数据：570
+INFO     fxcm-usdjpy-5min新增数据：2
+INFO     fxcm-usdjpy-15min新增数据：190
+INFO     fxcm-eurusd-15min新增数据：190
+INFO     fxcm-eurchf-15min新增数据：190
+INFO     fxcm-eurcad-15min新增数据：190
+INFO     fxcm-eurjpy-15min新增数据：190
+INFO     fxcm-usdchf-5min新增数据：570
+INFO     fxcm-eurusd-5min新增数据：513
+INFO     fxcm-eurcad-5min新增数据：570
+INFO     fxcm-eurjpy-5min新增数据：7
+INFO     fxcm-gbpusd-5min新增数据：2
