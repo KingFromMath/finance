@@ -44,20 +44,30 @@ def transform(param):
 
     return df12
 
-def newDate(param1, param2):
+def newDate(param1, param2, param3, param4, param5):
     '''
     获取csv中的更新数据
+
     :param param1: DF from DB
     :param param2: DF from csv
-    :return:DF
+    :param param3: agent
+    :param param4: pair
+    :param param5: window
+    :return: DF
     '''
-    '排序，获取最近的日期'
-    dfsort = param1.sort_values('date', ascending=False)
-    df14 = dfsort.head(1)
-    df15 = df14.stack()[1]    #df15:<class 'pandas.tslib.Timestamp'>
+    '多条件筛选，避免先插入的数据影响后续判断'
+    x = param1.loc[(param1['agent'] == param3) & (param1['pair'] == param4) & (param1['window'] == param5), :]
+    '如果数据库中没有相应的值就直接返回csv DF'
+    if x['date'].count()>0:
+        '排序，获取最近的日期'
+        dfsort = x.sort_values('date', ascending=False)
+        df14 = dfsort.head(1)
+        df15 = df14.stack()[1]    #df15:<class 'pandas.tslib.Timestamp'>
 
-    df16 = param2[param2.date >= df15]    #TODO 这里把date写死在程序里了
-    return df16
+        df16 = param2[param2.date > df15]    #TODO 这里把date写死在程序里了
+        return df16
+    else:
+        return param2
 
 class DataBaseOperation(object):
     def __init__(self):
@@ -94,12 +104,19 @@ def main():
 
     'DataBaseOperation测试'
     instance = DataBaseOperation()
-    df20 = instance.select('select * from eurcad_5min_1')
+    df20 = instance.select('select * from minrecord')
     # print(df20)
 
     'lastDate测试'
-    df21 = newDate(df20, df22)
+    df21 = newDate(df20, df22, 'xm', 'usdchf', '15min')
     print(df21)
+
+    'general test'
+    # instance = DataBaseOperation()
+    # df23 = instance.select('select * from minrecord')
+    # x = df23.loc[(df23['agent']=='xm')&(df23['pair']=='eurchf')&(df23['window']=='15min'),:]
+    # print(x['date'].count())
+
 
 
 
