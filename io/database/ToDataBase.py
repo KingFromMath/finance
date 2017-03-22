@@ -53,10 +53,10 @@ def lastDate(param1, param2):
     '''
     '排序，获取最近的日期'
     dfsort = param1.sort_values('date', ascending=False)
-    df14 = (dfsort.head(1))
+    df14 = dfsort.head(1)
     df15 = df14.stack()[1]    #df15:<class 'pandas.tslib.Timestamp'>
 
-    df16 = param2[param2.date >= df15]
+    df16 = param2[param2.date >= df15]    #TODO 这里把date写死在程序里了
     return df16
 
 class DataBaseOperation(object):
@@ -90,15 +90,16 @@ def main():
     'transform测试'
     df13 = pd.read_csv('/home/hadoop/Files/Data/test/USDCNH5.csv',
                   names=['tradedate','tradetime','buy', 'highest', 'lowest', 'end', 'volume'], header=0)
-    # print(transform(df13))
+    df22 = transform(df13)
 
     'DataBaseOperation测试'
     instance = DataBaseOperation()
     df20 = instance.select('select * from eurcad_5min_1')
+    # print(df20)
 
     'lastDate测试'
-    df21 = lastDate(df20, df13)
-    print(df21)
+    df21 = lastDate(df20, df22)
+    # print(df21)
 
 
 
