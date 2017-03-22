@@ -16,6 +16,7 @@ create for:
     ┃┫┫  ┃┫┫
     ┗┻┛  ┗┻┛
 """
+from confandlog.log import *
 from iolib.database.ToDataBase import *
 from iolib.file.Path import *
 
@@ -31,30 +32,36 @@ def addInfo(param1, param2, param3):
     result1 = instance.secondFile()
 
     for i in result1:
+        print('正在更新 '+i+' 数据。。。')
         agent = i.split('/')[-1]
         result2 = instance.csvURL(i)    #result2:list
 
         for k in result2:
+            recordcount = 0
             window = makeParam(k)
-            currencyPair = ((k.split('/')[-1]).split('.')[0])[0:6]
+            currencyPair = (((k.split('/')[-1]).split('.')[0])[0:6]).lower()    #货币对都是小写
 
-
-            '获取需要新增的DF，调用ToDataBase方法'
-            df13 = pd.read_csv(k,names=['tradedate', 'tradetime', 'buy', 'highest', 'lowest', 'end', 'volume'], header=0)
-            df22 = transform(df13)
-            instance0 = DataBaseOperation()
-            df20 = instance0.select(param2)    #'select * from eurcad_5min_1'
-            df21 = newDate(df20, df22)
+            try:
+                '获取需要新增的DF，调用ToDataBase方法'
+                df13 = pd.read_csv(k,names=['tradedate', 'tradetime', 'buy', 'highest', 'lowest', 'end', 'volume'], header=0)
+                df22 = transform(df13)
+                instance0 = DataBaseOperation()
+                df20 = instance0.select(param2)    #'select * from eurcad_5min_1'
+                df21 = newDate(df20, df22, agent, currencyPair, window)
+            except:
+                logging.warning('调用ToDataBase方法出错！')
 
             count = df21['date'].count()
 
             if count>0:
                 df21['agent'] = agent    #SettingWithCopyWarning
                 df21['window'] = window
-                df21['pair'] = currencyPair.lower()    #货币对都是小写
-                # print(df21)
+                df21['pair'] = currencyPair
 
                 instance0.addToDB(df21, param3)
+
+            recordcount += count
+            logging.info(agent+'-'+currencyPair+'-'+window+'新增数据：'+str(recordcount))
 
             #为DF新增列，然后保存
 
@@ -65,7 +72,7 @@ def main():
     param1 = '/home/hadoop/Files/Data/test/data1'
     param2 = 'select * from eurcad_5min_1'
     param3 = 'minrecord'
-    addInfo(param1, param2, param3)
+    # addInfo(param1, param2, param3)
 if __name__ == '__main__':
     main()
 
