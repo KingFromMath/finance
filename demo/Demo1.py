@@ -33,7 +33,7 @@ from sqlalchemy import create_engine
 #                        })
 
 # print(df2.loc[:,['tradedate','tradetime']])
-df13 = pd.read_csv('/home/hadoop/Files/Data/USDCNH5.csv',
+df13 = pd.read_csv('/home/hadoop/Files/Data/test/USDCNH5.csv',
                   names=['tradedate','tradetime','buy', 'highest', 'lowest', 'end', 'volume'], header=0)
 
 # print(df3)
@@ -86,8 +86,8 @@ print(df6)
 
 
 
-with engine.connect() as conn, conn.begin():
-    df16.to_sql('eurcad_5min_1', engine, if_exists='append')    #if_exists='append'面临字段不统一的问题
+# with engine.connect() as conn, conn.begin():
+#     df16.to_sql('eurcad_5min_1', engine, if_exists='append')    #if_exists='append'面临字段不统一的问题
 
 #运行很完美，明天进行封装
 
