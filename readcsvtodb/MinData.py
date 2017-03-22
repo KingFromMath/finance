@@ -41,7 +41,7 @@ def addInfo(param1):
 
 def mian():
     path = '/home/hadoop/Files/Data/test/data1'
-    addInfo()
+    addInfo(path)
 
 if __name__ == '__main__':
     main()
