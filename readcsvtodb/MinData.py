@@ -16,8 +16,8 @@ create for:
     ┃┫┫  ┃┫┫
     ┗┻┛  ┗┻┛
 """
-from io.database.ToDataBase import *
-from io.file.Path import *
+from iolib.database.ToDataBase import *
+from iolib.file.Path import *
 
 def makeParam(param):
     result1 = (param.split('.')[0])
