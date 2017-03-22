@@ -19,7 +19,7 @@ create for:
 import logging
 import configparser
 cf = configparser.ConfigParser()
-cf.read("/home/duanyuping/PycharmProjects/finance/confandlog/finance.conf")
+cf.read("/home/hadoop/PycharmProjects/mathproject/confandlog/finance.conf")
 log_file = cf.get("log", "file")
 
 logging.basicConfig(
