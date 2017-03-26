@@ -130,7 +130,7 @@ def addToDB(tableName, info, agent):
             print('重复数据： '+info[0])
 
     except:
-        print(agent+info[0]+info[2])
+        print('error: '+agent+info[0]+info[2])
 
 '''主函数'''
 def webContent(param, tableName):
@@ -142,14 +142,14 @@ def webContent(param, tableName):
             record = siblings(webTitle_tp(th))    #解析结果1
             # print(record)
             for i in splitList(record):
-                print(i)
+                # print(i)
                 addToDB(tableName,i,findAgent(param))
-            print('+++++++++++++++++++++++++++++++++++++++')
+            # print('+++++++++++++++++++++++++++++++++++++++')
             record1 = siblings(webTitle_sl(th))    #解析结果2
             for k in splitList(record1):
-                print(k)
+                # print(k)
                 addToDB(tableName,k,findAgent(param))
 
 
 '''调用函数新增数据'''
-webContent("/home/duanyuping/Files/input/finance/forex.html", 'currencytrades')
+# webContent("/home/duanyuping/Files/input/finance/forex.html", 'currencytrades')
