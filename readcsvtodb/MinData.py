@@ -29,6 +29,8 @@ def makeParam(param):
     result1 = (param.split('.')[0])
     if result1[-2]=='1':
         return '15min'
+    elif result1[-2] == '4':
+        return 'day'
     else:
         return '5min'
 
@@ -70,10 +72,13 @@ def addInfo(param1, param2, param3):
                 df21['window'] = window
                 df21['pair'] = currencyPair
 
+                '需要检测数据就注释掉instance0.addToDB，logging'
+
                 instance0.addToDB(df21, param3)    #inset record
 
             recordcount += count
             logging.info(agent+'-'+currencyPair+'-'+window+'新增数据：'+str(recordcount))
+            # print(agent+'-'+currencyPair+'-'+window+'新增数据：'+str(recordcount))
 
             #为DF新增列，然后保存
 
